@@ -37,9 +37,9 @@ def average_cnadidates_per_course(candidates):
     totalQA = len(get_candidates_of_course(candidates, "QA"))
     totalIOS = len(get_candidates_of_course(candidates, "iOS"))
 
-    print(f"API .NET: {calcule_avg(totalDotNet,total)}% \nQA: {calcule_avg(totalQA,total)}% \nIOS: {calcule_avg(totalIOS,total)}%")
+    print(f"API .NET: {calculate_percentage(totalDotNet,total)}% \nQA: {calculate_percentage(totalQA,total)}% \nIOS: {calculate_percentage(totalIOS,total)}%")
 
-def calcule_avg(quantity, total):
+def calculate_percentage(quantity, total):
     return (quantity/total)*100
 
 def average_age(candidates, courseName):
@@ -47,17 +47,17 @@ def average_age(candidates, courseName):
     totalAgeCandidates = sum_age_of_candidates_of_course(candidates, courseName)
     avarageAge = totalAgeCandidates/totalCandidates
 
-    print(f"A Média de age dos candidatos do {courseName} é {avarageAge}")
+    print(f"A Média de idade dos candidatos do {courseName} é {avarageAge}")
 
 def get_oldest_candidate(candidates,courseName):
     courseCandidates = get_candidates_of_course(candidates, courseName)
     oldest = max(map(lambda candidate: int(candidate.age.split(" ")[0]),courseCandidates))
-    print(f"O idade do mais velho no curso de {courseName} é {oldest}")
+    print(f"A idade do mais velho no curso de {courseName} é {oldest}")
 
 def get_youngest_candidate(candidates, courseName):
     courseCandidates = get_candidates_of_course(candidates, courseName)
     youngest = min(map(lambda candidate: int(candidate.age.split(" ")[0]),courseCandidates))
-    print(f"O idade do mais jovem no curso de {courseName} é {youngest}")
+    print(f"A idade do mais jovem no curso de {courseName} é {youngest}")
 
 def get_candidates_of_course(candidates, courseName):
     return list(filter(lambda candidate: candidate.course == courseName, candidates))
@@ -76,6 +76,9 @@ def save_order_by_name(candidates):
         file.writelines(candidate)
     file.close()
 
+
+
+
 datas = read_file("AppAcademy_Candidates.csv")
 
 candidates = get_candidates(datas)
@@ -89,6 +92,7 @@ get_oldest_candidate(candidates, "iOS")
 get_youngest_candidate(candidates, "API .NET")
 
 totalAgeOfCandidate =  sum_age_of_candidates_of_course(candidates, "API .NET")
-print(f"a soma das idades dos candidatos do curso de API .NET é:{totalAgeOfCandidate}")
 
-print(f"{total_states(candidates)}")
+print(f"A soma das idades dos candidatos de API .NET eh igual a:{totalAgeOfCandidate}")
+
+print(f"A quantidade de estados distintos são de:{total_states(candidates)} estados")
