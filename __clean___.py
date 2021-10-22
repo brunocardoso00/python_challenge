@@ -87,7 +87,7 @@ def save_order_by_name(candidates):
     file.close()
 
 # [x] o instrutor de iOS tem mais de 20 anos
-# [] o instrutor de API .NET é mais novo do que o instrutor do iOS
+# [x] o instrutor de API .NET é mais novo do que o instrutor do iOS
 # [x]a idade do instrutor de iOS é um número primo
 # [x]o primeiro nome do instrutor de API .NET tem 3 vogais
 # [x]a última letra do último nome do instrutor de API .NET é a letra "k"
@@ -113,7 +113,8 @@ def find_instructors(candidates):
                             count_vowels(candidate.name.split(" ")[0]) == 3 and
                             candidate.course != "API .NET" and
                             candidate.name.split(" ")[1][-1] == "k" and
-                            (ios.age - candidate.age) <= 10, instructoresCommunRules))[0]
+                            (ios.age - candidate.age) <= 10 and
+                            (candidate.age < ios.age), instructoresCommunRules))[0]
 
     print("O instrutor do iOS eh: " + ios.name)
     print("O instrutor de apiDotNet eh: " + apiDotNet.name)
