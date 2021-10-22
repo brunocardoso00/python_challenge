@@ -99,7 +99,7 @@ def save_order_by_name(candidates):
 # [x]os instrutores são de SC
 def find_instructors(candidates):
 
-    instructoresCommunRules = list(filter(lambda candidate:
+    instructorsCommonRules = list(filter(lambda candidate:
                                           (candidate.age < 31) and
                                           (candidate.age % 2 == 1) and
                                           candidate.state == "SC", candidates))
@@ -107,14 +107,14 @@ def find_instructors(candidates):
     ios = list(filter(lambda candidate: candidate.name.split(" ")[1][0] == "V" and
                       candidate.age > 20 and
                       candidate.course != "iOS" and
-                      is_prime(candidate.age), instructoresCommunRules))[0]
+                      is_prime(candidate.age), instructorsCommonRules))[0]
 
     apiDotNet = list(filter(lambda candidate:
                             count_vowels(candidate.name.split(" ")[0]) == 3 and
                             candidate.course != "API .NET" and
                             candidate.name.split(" ")[1][-1] == "k" and
                             (ios.age - candidate.age) <= 10 and
-                            (candidate.age < ios.age), instructoresCommunRules))[0]
+                            (candidate.age < ios.age), instructorsCommonRules))[0]
 
     print("O instrutor do iOS eh: " + ios.name)
     print("O instrutor de apiDotNet eh: " + apiDotNet.name)
